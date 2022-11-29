@@ -1,15 +1,12 @@
 queue_rules:
   - name: default
     conditions:
-      - "#approved-reviews-by>=2"
       - check-success='on-commit / on-commit (push)'
 
 pull_request_rules:
   - name: merge using the merge queue
     conditions:
       - base=main
-      - "#approved-reviews-by>=2"
-      - check-success='on-commit / on-commit (push)'
     actions:
       queue:
         name: default
