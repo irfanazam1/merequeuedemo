@@ -26,6 +26,7 @@ jobs:
         mvn clean package
         
   finalize-status:
+    needs: on-commit
     name: finalize status
     runs-on: ubuntu-latest
     if: always()
