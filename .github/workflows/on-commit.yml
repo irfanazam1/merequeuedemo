@@ -10,6 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - uses: ./.github/actions/set-status
+      with:
+        sha: ${{ github.sha }}
+        context: 'CI Start'
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        status: pending
+        description: running
     - uses: actions/setup-java@v3
       with:
         distribution: 'temurin'
@@ -17,3 +24,18 @@ jobs:
         cache: 'maven'
     - run: |
         mvn clean package
+        
+  finalize-status:
+    name: finalize status
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+    - uses: ./.github/actions/set-status
+      with:
+        sha: ${{ github.sha }}
+        context: 'CI Start'
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        status: success
+        description: Completed
+    
+  
