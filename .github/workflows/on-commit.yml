@@ -27,7 +27,7 @@ jobs:
         
   finalize-status:
     needs: on-commit
-    name: finalize status
+    name: finalize-status
     runs-on: ubuntu-latest
     if: always()
     steps:
