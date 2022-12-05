@@ -15,7 +15,7 @@ public class AppTest
     @Test
     public void shouldAnswerWithTrue() throws Exception
     {
-        Thread.sleep(1000 * 2 * 60);
+        Thread.sleep(1000 * 1 * 60);
         // comment
         assertTrue( true );
     }
