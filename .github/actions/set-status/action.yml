@@ -27,9 +27,9 @@ runs:
   using: "composite"
   steps:
   - run: |
-      curl --fail --request POST --url "https://api.github.com/repos/irfanazam1/merequeuedemo/statuses/${{ inputs.sha }}" \
+      curl --fail --request POST --url "https://api.github.com/repos/irfanazam1/merequeuedemo/check-runs" \
       --header "Authorization: token ${{ inputs.github_token }}" \
       --header 'Accept:  application/vnd.github+json' \
       --header 'content-type: application/json' \
-      --data '{"name": "${{ inputs.context }}"  "status": "${{ inputs.status }}", "target_url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"}'
+      --data '{"name": "${{ inputs.context }}"  "status": "${{ inputs.status }}", "head_sha": "${{ inputs.sha }}" "target_url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"}'
     shell: bash
