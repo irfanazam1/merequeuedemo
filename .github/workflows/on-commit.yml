@@ -15,8 +15,8 @@ jobs:
         sha: ${{ github.sha }}
         context: 'MergeQueue CI'
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        status: pending
-        description: running
+        status: in_progress
+        description: Running
     - uses: actions/setup-java@v3
       with:
         distribution: 'temurin'
@@ -37,7 +37,8 @@ jobs:
         sha: ${{ github.sha }}
         context: 'MergeQueue CI'
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        status: success
+        status: completed
         description: Completed
+        conclusion: success
     
   

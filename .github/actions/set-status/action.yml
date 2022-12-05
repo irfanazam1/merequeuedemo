@@ -22,13 +22,19 @@ inputs:
     required: false
     description: 'Description'
     default: 'Running'
+ 
+  conclusion:
+    required: false
+    description: 'Conclusion'
+    default: 'neutral'
 
 runs:
   using: "composite"
   steps:
   - run: |
-      curl --fail --request POST --url "https://api.github.com/repos/irfanazam1/mergequeuedemo/statuses/${{ inputs.sha }}" \
-      --header "Authorization: token ${{ inputs.github_token }}" \
-      --header 'content-type: application/json' \
-      --data '{"state": "${{ inputs.status }}", "description": "${{ inputs.description }}", "context": "${{ inputs.context }}", "target_url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"}'
+      curl --fail --request POST --url "https://api.github.com/repos/irfanazam1/statuses/${{ input.sha }}" \
+      --header "Authorization: Bearer ${{ inputs.github_token }}" \
+      --header 'Accept:  application/vnd.github+json' \
+      -data '{"state": "${{ inputs.status }}", "description": "${{ inputs.description }}", "context": "${{ inputs.context }}", "target_url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"}'
+      # --data '{"name": "${{ inputs.context }}", "status": "${{ inputs.status }}", "head_sha": "${{ inputs.sha }}", "conclusion": "${{ inputs.conclusion}}", "output":{"title":"${{ inputs.context }}","summary":"${{ inputs.description }} ","text":""}}'
     shell: bash
