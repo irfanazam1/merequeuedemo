@@ -37,7 +37,7 @@ jobs:
         sha: ${{ github.sha }}
         context: 'MergeQueue CI'
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        status: completed
+        status: success
         description: Completed
     
   
