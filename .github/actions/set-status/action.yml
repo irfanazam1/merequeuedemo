@@ -32,7 +32,7 @@ runs:
   using: "composite"
   steps:
   - run: |
-      curl --fail --request POST --url "https://api.github.com/repos/irfanazam1/statuses/${{ inputs.sha }}" \
+      curl --fail --request POST --url "https://api.github.com/repos/irfanazam1/merequeuedemo/statuses/${{ inputs.sha }}" \
       --header "Authorization: Bearer ${{ inputs.github_token }}" \
       --header 'Accept:  application/vnd.github+json' \
       -data '{"state": "${{ inputs.status }}", "description": "${{ inputs.description }}", "context": "${{ inputs.context }}", "target_url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"}'
