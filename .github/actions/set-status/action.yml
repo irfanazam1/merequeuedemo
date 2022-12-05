@@ -23,7 +23,7 @@ inputs:
     description: 'Description'
     default: 'Running'
  
- conclusion:
+  conclusion:
     required: false
     description: 'Conclusion'
     default: 'neutral'
