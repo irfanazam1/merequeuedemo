@@ -1,8 +1,8 @@
 queue_rules:
   - name: default
     conditions:
-      - check-success='on-commit / on-commit (pull_request)'
-      - check-success='on-commit / finalize-status (pull_request)'
+      - check-success='on-commit'
+      - check-success='finalize-status'
 
 pull_request_rules:
   - name: merge using the merge queue
