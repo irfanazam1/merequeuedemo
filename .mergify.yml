@@ -1,12 +1,13 @@
 queue_rules:
   - name: default
     conditions:
-      - check-success='on-commit / on-commit (push)'
+      - check-success='CI Start'
 
 pull_request_rules:
   - name: merge using the merge queue
     conditions:
       - base=main
+      - check-success='CI Start'
     actions:
       queue:
         name: default
