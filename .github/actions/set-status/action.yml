@@ -35,5 +35,5 @@ runs:
       curl --fail --request POST --url "https://api.github.com/repos/irfanazam1/merequeuedemo/check-runs" \
       --header "Authorization: Bearer ${{ inputs.github_token }}" \
       --header 'Accept:  application/vnd.github+json' \
-      --data '{"name": "${{ inputs.context }}", "status": "${{ inputs.status }}", "head_sha": "${{ inputs.sha }}", "conclusion": "${{ inputs.conclusion}}", "output":{"title":"${{ inputs.context }}","summary":" ${{ inputs.description }} ","text":""}}'
+      --data '{"name": "${{ inputs.context }}", "status": "${{ inputs.status }}", "head_sha": "${{ inputs.sha }}", "conclusion": "${{ inputs.conclusion}}", "output":{"title":"${{ inputs.context }}","summary":"${{ inputs.description }} ","text":""}}'
     shell: bash
