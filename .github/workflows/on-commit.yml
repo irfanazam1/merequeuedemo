@@ -16,7 +16,7 @@ jobs:
         context: 'MergeQueue CI'
         github_token: ${{ secrets.GITHUB_TOKEN }}
         status: pending
-        description: running
+        description: Running
     - uses: actions/setup-java@v3
       with:
         distribution: 'temurin'
