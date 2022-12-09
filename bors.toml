@@ -1,1 +1,1 @@
-status = [ "ci", "CI / ci (pull_request)" ]
+pr_status = [ "SmokeTests" ]
