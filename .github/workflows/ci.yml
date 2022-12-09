@@ -12,13 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: ./.github/actions/set-status
-      with:
-        sha: ${{ github.sha }}
-        context: 'MergeQueue CI'
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        status: pending
-        description: Running
     - uses: actions/setup-java@v3
       with:
         distribution: 'temurin'
