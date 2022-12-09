@@ -2,8 +2,6 @@ name: on-commit
 
 on:
   pull_request:
-  push:
-    branches: [main]
 
 jobs:
   on-commit:
@@ -24,7 +22,17 @@ jobs:
         cache: 'maven'
     - run: |
         mvn clean package
-        
+       
+  ci-success:
+    name: ci
+    if: ${{ success() }}
+    needs:
+      - on-commit
+    runs-on: ubuntu-latest
+    steps:
+    - name: CI succeeded
+      run: exit 0
+  
   finalize-status:
     needs: on-commit
     name: finalize-status
