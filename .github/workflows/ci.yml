@@ -28,7 +28,7 @@ jobs:
         mvn clean package
   
   ci-success:
-    name: ci
+    name: SmokeTests
     if: ${{ success() }}
     needs:
       - build-and-test
