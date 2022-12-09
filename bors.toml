@@ -1,1 +1,1 @@
-status = ["ci"]
+status = ["ci","CI / ci (pull_request)"]
