@@ -1,10 +1,10 @@
-name: on-commit
+name: build and test
 
 on:
   pull_request:
 
 jobs:
-  on-commit:
+  buildandtest:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -23,20 +23,14 @@ jobs:
     - run: |
         mvn clean package
   
-  finalize-status:
-    needs: on-commit
-    name: finalize-status
+  ci-success:
+    name: ci
+    if: ${{ success() }}
+    needs:
+      - buildandtest
     runs-on: ubuntu-latest
-    if: always()
     steps:
-    - uses: actions/checkout@v3 
-    - uses: ./.github/actions/set-status
-      with:
-        sha: ${{ github.sha }}
-        context: 'MergeQueue CI'
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        status: success
-        description: Completed
-        conclusion: success
+      - name: CI succeeded
+        run: exit 0
     
   
